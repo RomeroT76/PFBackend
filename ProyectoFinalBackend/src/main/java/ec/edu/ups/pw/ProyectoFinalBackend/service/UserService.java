@@ -78,7 +78,7 @@ public class UserService {
 	public Response updateUser(User user) {
 		try {
 			this.um.updateUser(user);
-			return Response.ok("Credenciales actualizadas correctamentes " + user).build();
+			return Response.ok(user).build();
 		} catch (Exception e) {
 			// TODO: handle exception
 			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al intentar actualizar las credenciales").build();

@@ -18,14 +18,14 @@ public class Init {
 	public void init() {
 		
 		User u = new User();
-		u.setEmail("Roberto");
+		u.setEmail("robertoart76x@gmail.com");
 		u.setPassword("R123");;
 		u.setRol(Rol.ADMIN);
 		
 		userD.insert(u);
 		
 		User u1 = new User();
-		u1.setEmail("JorgeM");
+		u1.setEmail("robertoart23x@gmail.com");
 		u1.setRol(Rol.CLIENT);
 		u1.setPassword("asd");
 		

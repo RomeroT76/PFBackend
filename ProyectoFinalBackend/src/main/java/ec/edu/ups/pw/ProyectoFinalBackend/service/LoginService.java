@@ -43,7 +43,7 @@ public class LoginService {
         } catch (Exception e) {
             // Manejar cualquier excepción y devolver un error interno del servidor
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                .entity("Error en la autenticación: " + e.getMessage())
+                .entity("Credenciales invalidas")
                 .build();
         }
     }
