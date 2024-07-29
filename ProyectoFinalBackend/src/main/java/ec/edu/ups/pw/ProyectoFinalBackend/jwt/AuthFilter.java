@@ -24,7 +24,7 @@ import jakarta.ws.rs.ext.Provider;
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthFilter implements ContainerRequestFilter, ContainerResponseFilter {
-	
+
 	@Inject
 	private UserManagement userM;
 
@@ -57,7 +57,7 @@ public class AuthFilter implements ContainerRequestFilter, ContainerResponseFilt
 				// TODO: handle exception
 				throw new IOException("Invalid token");
 			}
-			if(new DateTime(claimSet.getExpirationTime()).isBefore(DateTime.now())) {
+			if (new DateTime(claimSet.getExpirationTime()).isBefore(DateTime.now())) {
 				throw new IOException("Expired token");
 			} else {
 				ec.edu.ups.pw.ProyectoFinalBackend.model.User user = this.userM.getUser(claimSet.getSubject());
@@ -66,15 +66,15 @@ public class AuthFilter implements ContainerRequestFilter, ContainerResponseFilt
 			}
 		}
 	}
-	
+
 	public static class Authorizer implements SecurityContext {
 
 		String userName;
 		Rol role;
-		
+
 		// Nos permitira validad que la conexion sea segura
 		boolean isSecure;
-		
+
 		public Authorizer(String userName, boolean isSecure) {
 			this.userName = userName;
 			this.isSecure = isSecure;
@@ -96,7 +96,7 @@ public class AuthFilter implements ContainerRequestFilter, ContainerResponseFilt
 		@Override
 		public boolean isUserInRole(String role) {
 			// TODO Auto-generated method stub
-			if(Rol.ADMIN.toString().equalsIgnoreCase(role) || Rol.CLIENT.toString().equalsIgnoreCase(role)) {
+			if (Rol.ADMIN.toString().equalsIgnoreCase(role) || Rol.CLIENT.toString().equalsIgnoreCase(role)) {
 				return true;
 			}
 			return false;
@@ -113,13 +113,13 @@ public class AuthFilter implements ContainerRequestFilter, ContainerResponseFilt
 			// TODO Auto-generated method stub
 			return "JWT";
 		}
-		
+
 	}
-	
+
 	public static class User implements Principal {
-		
+
 		String name;
-		
+
 		public User(String name) {
 			super();
 			this.name = name;
@@ -130,7 +130,7 @@ public class AuthFilter implements ContainerRequestFilter, ContainerResponseFilt
 			// TODO Auto-generated method stub
 			return this.name;
 		}
-		
+
 	}
 
 }

@@ -18,10 +18,10 @@ import jakarta.ws.rs.core.Response;
 
 @Path("/user")
 public class UserService {
-	
+
 	@Inject
 	UserManagement um;
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -36,13 +36,13 @@ public class UserService {
 	@Path("/{email}/{password}")
 	public Response getUser(@PathParam("email") String email, @PathParam("password") String password) {
 		User user = this.um.getUser(email);
-		if(user.getPassword().equals(password)) {
+		if (user.getPassword().equals(password)) {
 			return Response.ok(user).build();
 		} else {
 			return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciales Invalidas").build();
 		}
 	}
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -53,10 +53,11 @@ public class UserService {
 			return Response.ok(user).build();
 		} catch (Exception e) {
 			// TODO: handle exception
-			return Response.status(Response.Status.UNAUTHORIZED).entity("El correo electronico ya se encuentra asociado a una cuenta").build();
+			return Response.status(Response.Status.UNAUTHORIZED)
+					.entity("El correo electronico ya se encuentra asociado a una cuenta").build();
 		}
 	}
-	
+
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -67,10 +68,11 @@ public class UserService {
 			return Response.ok("Se ha eliminado existosamente el usario: " + email).build();
 		} catch (Exception e) {
 			// TODO: handle exception
-			return Response.status(Response.Status.UNAUTHORIZED).entity("No se ha podido eliminar el usauario solicitado").build();
+			return Response.status(Response.Status.UNAUTHORIZED)
+					.entity("No se ha podido eliminar el usauario solicitado").build();
 		}
 	}
-	
+
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -81,7 +83,8 @@ public class UserService {
 			return Response.ok(user).build();
 		} catch (Exception e) {
 			// TODO: handle exception
-			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al intentar actualizar las credenciales").build();
+			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al intentar actualizar las credenciales")
+					.build();
 		}
 	}
 }
