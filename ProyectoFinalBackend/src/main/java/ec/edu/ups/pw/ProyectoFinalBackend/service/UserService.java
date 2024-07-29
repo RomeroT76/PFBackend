@@ -64,7 +64,7 @@ public class UserService {
 	public Response deleteUser(@PathParam("email") String email) {
 		try {
 			this.um.deleteUser(email);
-			return Response.ok("Se ha eliminado existosamente el usario: " + email).build();
+			return Response.ok().build();
 		} catch (Exception e) {
 			// TODO: handle exception
 			return Response.status(Response.Status.UNAUTHORIZED).entity("No se ha podido eliminar el usauario solicitado").build();
