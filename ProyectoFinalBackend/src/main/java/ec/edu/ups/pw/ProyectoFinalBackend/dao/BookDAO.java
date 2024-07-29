@@ -20,7 +20,7 @@ public class BookDAO {
 	}
 	
 	public List<Book> getAll() {
-		String jpql = "SELECT c FROM User c";
+		String jpql = "SELECT c FROM Book c";
 		Query query = this.em.createQuery(jpql, Book.class);
 		return query.getResultList();
 	}

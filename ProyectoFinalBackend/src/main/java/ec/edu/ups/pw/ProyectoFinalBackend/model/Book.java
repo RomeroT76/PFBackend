@@ -5,6 +5,8 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,23 +14,24 @@ import jakarta.persistence.Table;
 @Table(name = "Books")
 public class Book implements Serializable{
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "b_id")
 	private int id;
 	
 	@Column(name = "b_name")
 	private String name;
 	
-	@Column(name = "b_description")
-	private String description;
-	
 	@Column(name = "b_genere")
-	private List<String> categories;
+	private String genere;
 	
 	@Column(name = "b_image")
 	private String image;
 	
 	@Column(name = "b_authors")
-	private List<String> authors;
+	private String author;
+	
+	@Column(name = "b_availability")
+	private boolean availability;
 
 	public int getId() {
 		return id;
@@ -46,20 +49,12 @@ public class Book implements Serializable{
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getGenere() {
+		return genere;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public List<String> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(List<String> categories) {
-		this.categories = categories;
+	public void setGenere(String genere) {
+		this.genere = genere;
 	}
 
 	public String getImage() {
@@ -70,12 +65,19 @@ public class Book implements Serializable{
 		this.image = image;
 	}
 
-	public List<String> getAuthors() {
-		return authors;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setAuthors(List<String> authors) {
-		this.authors = authors;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	
+
+	public boolean isAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
+	}
 }

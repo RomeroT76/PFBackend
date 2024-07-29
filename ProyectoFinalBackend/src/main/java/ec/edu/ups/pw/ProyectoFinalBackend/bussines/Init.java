@@ -1,7 +1,9 @@
 package ec.edu.ups.pw.ProyectoFinalBackend.bussines;
 
+import ec.edu.ups.pw.ProyectoFinalBackend.dao.BookDAO;
 import ec.edu.ups.pw.ProyectoFinalBackend.dao.UserDAO;
 import ec.edu.ups.pw.ProyectoFinalBackend.enums.Rol;
+import ec.edu.ups.pw.ProyectoFinalBackend.model.Book;
 import ec.edu.ups.pw.ProyectoFinalBackend.model.User;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Singleton;
@@ -14,6 +16,10 @@ public class Init {
 	
 	@Inject
 	UserDAO userD;
+	
+	@Inject
+	BookDAO bookD;
+	
 	@PostConstruct
 	public void init() {
 		
@@ -30,6 +36,15 @@ public class Init {
 		u1.setPassword("asd");
 		
 		userD.insert(u1);
+		
+		Book b = new Book();
+		b.setName("aaa");
+		b.setAuthor("bbb");
+		b.setAvailability(true);
+		b.setGenere("sss");
+		b.setImage("ddd");
+		
+		bookD.insert(b);
 	}
 
 }
