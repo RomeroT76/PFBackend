@@ -37,4 +37,25 @@ public class BookDAO {
 		Book book = this.read(id);
 		this.em.remove(book);
 	}
+	
+	public List<Book> searchBooksByAuthor(String value) {
+		String jpql = "SELECT b FROM Book b WHERE LOWER(b.author) = LOWER(:value)";
+		Query query = this.em.createQuery(jpql, Book.class);
+		query.setParameter("value", value);
+		return query.getResultList();
+	}
+	
+	public List<Book> searchBooksByName(String value) {
+		String jpql = "SELECT b FROM Book b WHERE LOWER(b.name) = LOWER(:value)";
+		Query query = this.em.createQuery(jpql, Book.class);
+		query.setParameter("value", value);
+		return query.getResultList();
+	}
+	
+	public List<Book> searchBooksByGenere(String value) {
+		String jpql = "SELECT b FROM Book b WHERE LOWER(b.genere) = LOWER(:value)";
+		Query query = this.em.createQuery(jpql, Book.class);
+		query.setParameter("value", value);
+		return query.getResultList();
+	}
 }

@@ -15,22 +15,22 @@ import jakarta.persistence.Table;
 public class Book implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "b_id")
+	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "b_name")
+	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "b_genere")
+	@Column(name = "genere")
 	private String genere;
 	
-	@Column(name = "b_image")
+	@Column(name = "image")
 	private String image;
 	
-	@Column(name = "b_authors")
+	@Column(name = "author")
 	private String author;
 	
-	@Column(name = "b_availability")
+	@Column(name = "availability")
 	private boolean availability;
 
 	public int getId() {

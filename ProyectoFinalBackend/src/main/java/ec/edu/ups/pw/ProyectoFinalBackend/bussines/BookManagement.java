@@ -32,4 +32,16 @@ public class BookManagement {
 	public void delete(int id) {
 		this.bookD.delete(id);
 	}
+	
+	public List<Book> searchBooksByAuthor(String author) {
+		return this.bookD.searchBooksByAuthor(author);
+	}
+	
+	public List<Book> searchBooksByName(String author) {
+		return this.bookD.searchBooksByName(author);
+	}
+	
+	public List<Book> searchBooksByGenere(String author) {
+		return this.bookD.searchBooksByGenere(author);
+	}
 }

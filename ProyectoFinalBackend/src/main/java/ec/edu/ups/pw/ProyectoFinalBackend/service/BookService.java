@@ -85,4 +85,46 @@ public class BookService {
 			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al intentar actualizar el libro").build();
 		}
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/author/{author}")
+	public Response searchBooksByAuthor(@PathParam("author") String author) {
+		try {
+			List<Book> books = this.bm.searchBooksByAuthor(author);
+			return Response.ok(books).build();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al buscar libros").build();
+		}
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/name/{name}")
+	public Response searchBooksByName(@PathParam("name") String name) {
+		try {
+			List<Book> books = this.bm.searchBooksByName(name);
+			return Response.ok(books).build();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al buscar libros").build();
+		}
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/genere/{genere}")
+	public Response searchBooksByGenere(@PathParam("genere") String genere) {
+		try {
+			List<Book> books = this.bm.searchBooksByGenere(genere);
+			return Response.ok(books).build();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al buscar libros").build();
+		}
+	}
 }
