@@ -58,4 +58,11 @@ public class BookDAO {
 		query.setParameter("value", value);
 		return query.getResultList();
 	}
+	
+	public List<Book> searchBooksByAvailability(String value) {
+		String jpql = "SELECT b FROM Book b WHERE LOWER(b.availability) = LOWER(:value)";
+		Query query = this.em.createQuery(jpql, Book.class);
+		query.setParameter("value", value);
+		return query.getResultList();
+	}
 }

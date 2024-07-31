@@ -127,4 +127,18 @@ public class BookService {
 			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al buscar libros").build();
 		}
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/availability/{availability}")
+	public Response searchBooksByAvailability(@PathParam("availability") String availability) {
+		try {
+			List<Book> books = this.bm.searchBooksByAvailability(availability);
+			return Response.ok(books).build();
+		} catch (Exception e) {
+			// TODO: handle exception
+			return Response.status(Response.Status.UNAUTHORIZED).entity("Error al buscar libros").build();
+		}
+	}
 }

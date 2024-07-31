@@ -1,5 +1,6 @@
 package ec.edu.ups.pw.ProyectoFinalBackend.bussines;
 
+import java.util.TimeZone;
 import ec.edu.ups.pw.ProyectoFinalBackend.dao.BookDAO;
 import ec.edu.ups.pw.ProyectoFinalBackend.dao.UserDAO;
 import ec.edu.ups.pw.ProyectoFinalBackend.enums.Rol;
@@ -23,15 +24,17 @@ public class Init {
 	@PostConstruct
 	public void init() {
 		
+		TimeZone.setDefault(TimeZone.getTimeZone("America/Guayaquil"));
+		
 		User u = new User();
-		u.setEmail("robertoart76x@gmail.com");
+		u.setEmail("robertoart23x@gmail.com");
 		u.setPassword("R123");;
 		u.setRol(Rol.ADMIN);
 		
 		userD.insert(u);
 		
 		User u1 = new User();
-		u1.setEmail("robertoart23x@gmail.com");
+		u1.setEmail("robertoart76x@gmail.com");
 		u1.setRol(Rol.CLIENT);
 		u1.setPassword("asd");
 		
@@ -40,7 +43,7 @@ public class Init {
 		Book b = new Book();
 		b.setName("aaa");
 		b.setAuthor("bbb");
-		b.setAvailability(true);
+		b.setAvailability("available");
 		b.setGenere("sss");
 		b.setImage("ddd");
 		

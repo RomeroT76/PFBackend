@@ -15,23 +15,23 @@ import jakarta.persistence.Table;
 public class Book implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "b_id")
 	private int id;
 	
-	@Column(name = "name")
+	@Column(name = "b_name")
 	private String name;
 	
-	@Column(name = "genere")
+	@Column(name = "b_genere")
 	private String genere;
 	
-	@Column(name = "image")
+	@Column(name = "b_image")
 	private String image;
 	
-	@Column(name = "author")
+	@Column(name = "b_author")
 	private String author;
 	
-	@Column(name = "availability")
-	private boolean availability;
+	@Column(name = "b_availability")
+	private String availability;
 
 	public int getId() {
 		return id;
@@ -73,11 +73,11 @@ public class Book implements Serializable{
 		this.author = author;
 	}
 
-	public boolean isAvailability() {
-		return availability;
-	}
+	public String getAvailability() {
+        return availability;
+    }
 
-	public void setAvailability(boolean availability) {
-		this.availability = availability;
-	}
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
 }

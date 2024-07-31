@@ -37,11 +37,15 @@ public class BookManagement {
 		return this.bookD.searchBooksByAuthor(author);
 	}
 	
-	public List<Book> searchBooksByName(String author) {
-		return this.bookD.searchBooksByName(author);
+	public List<Book> searchBooksByName(String name) {
+		return this.bookD.searchBooksByName(name);
 	}
 	
-	public List<Book> searchBooksByGenere(String author) {
-		return this.bookD.searchBooksByGenere(author);
+	public List<Book> searchBooksByGenere(String genere) {
+		return this.bookD.searchBooksByGenere(genere);
+	}
+	
+	public List<Book> searchBooksByAvailability(String availability) {
+		return this.bookD.searchBooksByAvailability(availability);
 	}
 }
